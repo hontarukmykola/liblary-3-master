@@ -1,6 +1,6 @@
-import { LeftCircleOutlined, LeftOutlined } from '@ant-design/icons'
+import { LeftOutlined } from '@ant-design/icons'
 import { Button, Flex, Image, Skeleton, Space, Tag } from 'antd'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ProductModel } from '../model/products';
 const api = "workstation id=LibraryDB.mssql.somee.com;packet size=4096;user id=Mukolaa_SQLLogin_1;pwd=34aagjlufn;data source=LibraryDB.mssql.somee.com;persist security info=False;initial catalog=LibraryDB;TrustServerCertificate=True";
