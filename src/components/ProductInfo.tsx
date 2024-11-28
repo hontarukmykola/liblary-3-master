@@ -1,8 +1,8 @@
 import { LeftOutlined } from '@ant-design/icons'
-import { Button, Flex, Image, Skeleton, Space, Tag } from 'antd'
+import { Button, Flex, Skeleton, Space, Tag } from 'antd'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { ProductModel } from '../model/products';
+import { HotelModel } from '../model/products';
 const api = "workstation id=LibraryDB.mssql.somee.com;packet size=4096;user id=Mukolaa_SQLLogin_1;pwd=34aagjlufn;data source=LibraryDB.mssql.somee.com;persist security info=False;initial catalog=LibraryDB;TrustServerCertificate=True";
 type QuaryParams = {
     id: string;
@@ -10,7 +10,7 @@ type QuaryParams = {
 export default function ProductInfo() {
     const { id } = useParams<QuaryParams>();
     const navigate = useNavigate();
-    const [item, setItem] = useState<ProductModel | null>(null);
+    const [item, setItem] = useState<HotelModel | null>(null);
     useEffect(() => {
         setTimeout(() => {
             fetch(api + id).then(res => res.json()).then(data => setItem(data));
@@ -22,20 +22,17 @@ export default function ProductInfo() {
             {item
                 ?
                 <div>
-                    <h2>{item.title}</h2>
-                    <p>{item.genreName}</p>
-                    <hr />
-                    <Image
-                        width={200}
-                        src={item.imageUrl}
-                    />
+                    <h2>Room number:{item.number}</h2>
+                    <p>Room rating:{item.rating}</p>
                     <p>Price: {item.price}$</p>
                     <p>Discount: {item.discount}%</p>
-                    <p>Availability: {item.quantity > 0 ?
-                        <Tag color="green">{item.quantity}</Tag>
+                    <p>Rating: {item.rating > 0 ?
+                        <Tag color="green">{item.rating}</Tag>
                         :
-                        <Tag color="volcano">Out of Stock</Tag>}</p>
-                    <p>{item.description}</p>
+                        <Tag color="volcano">Very expensive!</Tag>}</p>
+                    <p>Room flour:{item.flour}</p>
+                    <p>Amount of people:{item.amoundOfPeople}</p>
+                    <p>Amount of bed:{item.amoundOfBed}</p>
                 </div>
                 :
                 <Flex gap="middle" vertical>

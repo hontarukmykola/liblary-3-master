@@ -2,28 +2,22 @@ import { useEffect, useState } from 'react';
 import { Button, message, Popconfirm, Space, Table, TableProps, Tag } from 'antd';
 import { DeleteOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { ProductModel } from '../model/products';
+import { HotelModel } from '../model/products';
 const api = "https://shop-pd211-awdhcvf3ebdpb7es.polandcentral-01.azurewebsites.net/api/products/";
 const Products = () => {
-    const [products, setProducts] = useState<ProductModel[]>([]);
+    const [products, setProducts] = useState<HotelModel[]>([]);
     useEffect(() => {
         // code...
         fetch(api + "all").then(res => res.json()).then(data => {
-            const items = data as ProductModel[];
+            const items = data as HotelModel[];
             setProducts(items.sort((x, y) => y.id - x.id));
         });
     }, []);
-    const columns: TableProps<ProductModel>['columns'] = [
+    const columns: TableProps<HotelModel>['columns'] = [
         {
-            title: 'Image',
-            dataIndex: 'imageUrl',
-            key: 'image',
-            render: (text, i) => <img height={40} src={text} alt={i.title}></img>,
-        },
-        {
-            title: 'Title',
-            dataIndex: 'title',
-            key: 'title',
+            title: 'Number',
+            dataIndex: 'number',
+            key: 'number',
             render: (text) => <a>{text}</a>,
         },
         {
@@ -37,14 +31,14 @@ const Products = () => {
             key: 'discount',
         },
         {
-            title: 'Stock',
-            key: 'stock',
-            dataIndex: 'stock',
+            title: 'Rating',
+            key: 'rating',
+            dataIndex: 'rating',
             render: (_, record) => (
-                record.quantity > 0 ?
-                    <Tag color="green">Available {record.quantity}</Tag>
+                record.rating > 0 ?
+                    <Tag color="green">Available {record.rating}</Tag>
                     :
-                    <Tag color="volcano">Out of Stock</Tag>
+                    <Tag color="volcano">Very exp.</Tag>
             ),
         },
         {
@@ -57,7 +51,7 @@ const Products = () => {
                     </Link>
                     <Popconfirm
                         title="Delete the product"
-                        description={`Are you sure to delete ${record.title}?`}
+                        description={`Are you sure to delete room number${record.number}?`}
                         onConfirm={() => onDelete(record.id)}
                         okText="Yes"
                         cancelText="No"

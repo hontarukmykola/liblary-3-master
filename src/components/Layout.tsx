@@ -32,12 +32,12 @@ const AppLayout: React.FC = () => {
                         {
                             key: '/products',
                             icon: <ProductFilled />,
-                            label: <Link to="/products">Products</Link>,
+                            label: <Link to="/products">Rooms</Link>,
                         },
                         {
                             key: '/create',
                             icon: <PlusOutlined />,
-                            label: <Link to="/create">Add book</Link>,
+                            label: <Link to="/create">Add Room</Link>,
                         },
                         {
                             key: '/about',

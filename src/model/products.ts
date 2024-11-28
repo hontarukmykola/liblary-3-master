@@ -1,31 +1,21 @@
-export interface ProductModel {
+export interface HotelModel {
   id: number;
-  title: string;
-  quantity: number;
+  number: number;
+  rating: number;
   price: number;
-  discount: number;
-  imageUrl: string;
-  description?: string;
-  genreName?: string;
+  discount?: number;
+  flour: number;
+  amoundOfPeople: number;
+  amoundOfBed: number;
 }
 
-export type ProductFormField = {
+export type HotelFormField = {
   id: number;
-  title: string;
-  quantity: number;
+  number: number;
+  rating: number;
   price: number;
-  discount: number;
-  imageUrl: string;
-  description?: string;
-  genreId: number;
+  discount?: number;
+  flour: number;
+  amoundOfPeople: number;
+  amoundOfBed: number;
 };
-
-export interface GenreModel {
-  id: number;
-  name: string;
-}
-
-export interface GenreOption {
-  value: number;
-  label: string;
-}

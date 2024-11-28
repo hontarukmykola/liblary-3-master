@@ -1,8 +1,7 @@
-import { Button, Form, FormProps, Input, InputNumber, message, Select, Space } from 'antd'
+import { Button, Form, FormProps, Input, InputNumber, message, Space } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
-import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { GenreModel, GenreOption, ProductFormField } from '../model/products';
+import {HotelFormField } from '../model/products';
 import { LeftOutlined } from '@ant-design/icons';
 
 const api = "workstation id=LibraryDB.mssql.somee.com;packet size=4096;user id=Mukolaa_SQLLogin_1;pwd=34aagjlufn;data source=LibraryDB.mssql.somee.com;persist security info=False;initial catalog=LibraryDB;TrustServerCertificate=True";
@@ -11,20 +10,8 @@ export default function CreateProduct() {
 
     const navigate = useNavigate();
 
-    const [categories, setCategories] = useState<GenreOption[]>([]);
 
-    useEffect(() => {
-        fetch(api + "categories")
-            .then(res => res.json())
-            .then(data => {
-                const items = data as GenreModel[];
-                setCategories(items.map(x => {
-                    return { label: x.name, value: x.id };
-                }));
-            })
-    }, []);
-
-    const onSubmit: FormProps<ProductFormField>['onFinish'] = (item) => {
+    const onSubmit: FormProps<HotelFormField>['onFinish'] = (item) => {
 
         console.log(item);
 
@@ -60,7 +47,7 @@ export default function CreateProduct() {
                 layout="horizontal"
                 onFinish={onSubmit}
             >
-                <Form.Item<ProductFormField> label="Name" name="title"
+                <Form.Item<HotelFormField> label="Number" name="number"
                     rules={[
                         {
                             required: true,
@@ -69,22 +56,19 @@ export default function CreateProduct() {
                     ]}>
                     <Input />
                 </Form.Item>
-                <Form.Item<ProductFormField> label="Price" name="price">
+                <Form.Item<HotelFormField> label="Rating" name="rating">
                     <InputNumber style={{ width: '100%' }} />
                 </Form.Item>
-                <Form.Item<ProductFormField> label="Discount" name="discount">
+                <Form.Item<HotelFormField> label="Discount" name="discount">
                     <InputNumber style={{ width: '100%' }} />
                 </Form.Item>
-                <Form.Item<ProductFormField> label="Quantity" name="quantity">
+                <Form.Item<HotelFormField> label="Flour" name="flour">
                     <InputNumber style={{ width: '100%' }} />
                 </Form.Item>
-                <Form.Item<ProductFormField> label="Genre" name="genreId">
-                    <Select options={categories}></Select>
+                <Form.Item<HotelFormField> label="Amount of People" name="amoundOfPeople">
+                <InputNumber style={{ width: '100%' }} />
                 </Form.Item>
-                <Form.Item<ProductFormField> label="Description" name="description">
-                    <TextArea rows={4} />
-                </Form.Item>
-                <Form.Item<ProductFormField> label="Image" name="imageUrl">
+                <Form.Item<HotelFormField> label="Amount of Bed" name="amoundOfBed">
                     <Input />
                 </Form.Item>
                 <Form.Item
