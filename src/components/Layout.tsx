@@ -5,6 +5,7 @@ import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     ProductFilled,
+    PlusOutlined,
     UploadOutlined,
     UserOutlined,
     VideoCameraOutlined,
@@ -27,17 +28,22 @@ const AppLayout: React.FC = () => {
                     defaultSelectedKeys={['1']}
                     items={[
                         {
-                            key: '1',
+                            key: '/',
                             icon: <HomeFilled />,
                             label: <Link to="/">Home</Link>,
                         },
                         {
-                            key: '2',
+                            key: '/products',
                             icon: <ProductFilled />,
                             label: <Link to="/products">Products</Link>,
                         },
                         {
-                            key: '3',
+                            key: '/create',
+                            icon: <PlusOutlined />,
+                            label: <Link to="/create">Add book</Link>,
+                        },
+                        {
+                            key: '/about',
                             icon: <InfoCircleFilled />,
                             label: <Link to="/about">About</Link>,
                         },
