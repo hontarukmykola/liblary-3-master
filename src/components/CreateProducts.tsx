@@ -1,5 +1,4 @@
 import { Button, Form, FormProps, Input, InputNumber, message, Space } from 'antd'
-import TextArea from 'antd/es/input/TextArea'
 import { useNavigate } from 'react-router-dom';
 import {HotelFormField } from '../model/products';
 import { LeftOutlined } from '@ant-design/icons';
